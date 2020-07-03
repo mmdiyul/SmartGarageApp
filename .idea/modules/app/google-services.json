@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "813657484301",
+    "firebase_url": "https://smartgarage-b4df5.firebaseio.com",
+    "project_id": "smartgarage-b4df5",
+    "storage_bucket": "smartgarage-b4df5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813657484301:android:13cc788c8b7b4dab75b944",
+        "android_client_info": {
+          "package_name": "com.sohyun.smartgarage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813657484301-chbuusiteq1s6bsiv5gu4uk1ee7u49k6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sohyun.smartgarage",
+            "certificate_hash": "053162405c26dd73977c56899a33db2f3b1120db"
+          }
+        },
+        {
+          "client_id": "813657484301-rcj1mecl522f2uiuju7bco6qh1s682m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMNStmP8WpoCYQZBWsUALUkHo-7ZW7688"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813657484301-rcj1mecl522f2uiuju7bco6qh1s682m3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

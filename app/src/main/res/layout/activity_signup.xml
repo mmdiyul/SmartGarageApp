@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4A4A4A"
-    tools:context=".MainActivity">
+    tools:context=".SignupActivity">
 
     <TextView
         android:id="@+id/title"
@@ -41,15 +41,28 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/login"
+            android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="SIGNUP"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000000"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Full name"
+            android:textColor="#000000"
+            android:textColorHint="#4A4A4A"
+            android:inputType="textCapWords"
+            app:layout_constraintTop_toBottomOf="@id/signup"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
         <EditText
             android:id="@+id/username"
@@ -60,7 +73,7 @@
             android:textColor="#000000"
             android:textColorHint="#4A4A4A"
             android:inputType="textEmailAddress"
-            app:layout_constraintTop_toBottomOf="@id/login"
+            app:layout_constraintTop_toBottomOf="@id/name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
@@ -78,11 +91,11 @@
             app:layout_constraintRight_toRightOf="parent"/>
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="LOGIN"
+            android:text="SIGNUP"
             android:textColor="#FFFFFF"
             android:background="@drawable/background_dark_rounded"
             app:layout_constraintTop_toBottomOf="@id/password"
@@ -95,9 +108,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:textSize="16sp"
-            android:text="Belum punya akun?"
+            android:text="Sudah punya akun?"
             android:textColor="#000000"
-            app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+            app:layout_constraintTop_toBottomOf="@id/buttonSignup"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
@@ -107,10 +120,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:textSize="16sp"
-            android:text="Daftar disini"
+            android:text="Masuk disini"
             android:textStyle="bold"
             android:textColor="#2196F3"
-            android:onClick="toSignUpForm"
+            android:onClick="toLoginForm"
             app:layout_constraintTop_toBottomOf="@id/belumPunya"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>

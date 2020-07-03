@@ -14,70 +14,73 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
-    private Button loginButton;
-    private EditText email, password;
+    private Button signupButton;
+    private EditText email, password, nama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        loginButton = (Button)findViewById(R.id.buttonLogin);
+        setContentView(R.layout.activity_signup);
+        signupButton = (Button)findViewById(R.id.buttonSignup);
+        nama = (EditText) findViewById(R.id.name);
         email = (EditText) findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                signUp();
             }
         });
-
-        if (currentUser != null) {
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
-            this.finish();
-        }
     }
 
-    public void toSignUpForm(View view) {
-        Intent intent = new Intent(this, SignupActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
-
-    public void login() {
-        mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+    public void signUp() {
+        mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(MainActivity.this, "Authentication success.",
+                            Toast.makeText(SignupActivity.this, "Signup success.",
                                     Toast.LENGTH_SHORT).show();
-                            homeActivity();
+                            User user = new User(nama.getText().toString(), email.getText().toString());
+                            String username = email.getText().toString().split("@")[0];
+                            mDatabase.child("user").child(username).setValue(user);
+                            loginActivity();
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(SignupActivity.this, "Signup failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
-    public void homeActivity() {
-        Intent intent = new Intent(this, HomeActivity.class);
+    public void toLoginForm(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    public void loginActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         this.finish();
     }
